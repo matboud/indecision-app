@@ -1,65 +1,60 @@
 'use strict';
 
-console.log("hello");
+console.log('App.js is running!');
 
 var app = {
-    title: 'title',
-    subtitle: 'subtitle'
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: []
 };
+
+var onFormSubmit = function onFormSubmit() {};
+
 var template = React.createElement(
-    'div',
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length > 0 ? 'Here are your options' : 'No options'
+  ),
+  React.createElement(
+    'ol',
     null,
     React.createElement(
-        'h1',
-        null,
-        app.title
+      'li',
+      null,
+      'Item one'
     ),
     React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'item'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'item'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'item'
-        )
+      'li',
+      null,
+      'Item two'
     )
+  ),
+  React.createElement(
+    'form',
+    { onSubmit: onFormSubmit },
+    React.createElement('input', { type: 'text', name: 'option' }),
+    React.createElement(
+      'button',
+      null,
+      'Add Option'
+    )
+  )
 );
 
-var name = 'amine';
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        name
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Age: 24'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Location: kenitra'
-    )
-);
-var appRoot = document.getElementById("app");
-
+var appRoot = document.getElementById('app');
 ReactDOM.render(template, appRoot);
+
+render();
