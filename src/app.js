@@ -23,6 +23,11 @@ const resetOptions = () => {
   app.options = [];
   rerender();
 }
+const whatToDo = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length);
+  const option = app.options[randomNum];
+  alert(option)
+}
 
 const rerender = () => {
   const template = (
@@ -31,16 +36,16 @@ const rerender = () => {
       {app.subtitle && <p>{app.subtitle}</p>}
       <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
       <p>{app.options.length}</p>
+      <button disabled={app.options.length === 0} onClick={whatToDo}>what to do?</button>
+      <button onClick={resetOptions}>reset options</button>
       <ol>
-        <li>Item one</li>
-        <li>Item two</li>
         {
           app.options.map((singleOption, index) => {
             return <li key={index}>{singleOption}</li>
           })
         }
       </ol>
-      <button onClick={resetOptions}>reset options</button>
+      
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />
         <button>Add Option</button>

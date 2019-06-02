@@ -25,6 +25,11 @@ var resetOptions = function resetOptions() {
   app.options = [];
   rerender();
 };
+var whatToDo = function whatToDo() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNum];
+  alert(option);
+};
 
 var rerender = function rerender() {
   var template = React.createElement(
@@ -51,18 +56,18 @@ var rerender = function rerender() {
       app.options.length
     ),
     React.createElement(
+      'button',
+      { disabled: app.options.length === 0, onClick: whatToDo },
+      'what to do?'
+    ),
+    React.createElement(
+      'button',
+      { onClick: resetOptions },
+      'reset options'
+    ),
+    React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item one'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item two'
-      ),
       app.options.map(function (singleOption, index) {
         return React.createElement(
           'li',
@@ -70,11 +75,6 @@ var rerender = function rerender() {
           singleOption
         );
       })
-    ),
-    React.createElement(
-      'button',
-      { onClick: resetOptions },
-      'reset options'
     ),
     React.createElement(
       'form',
