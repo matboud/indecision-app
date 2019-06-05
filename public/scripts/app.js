@@ -198,6 +198,15 @@ var Option = function (_React$Component5) {
   return Option;
 }(React.Component);
 
+var Stateless = function Stateless(props) {
+  return React.createElement(
+    'div',
+    null,
+    'hello : ',
+    props.name
+  );
+};
+
 var AddOption = function (_React$Component6) {
   _inherits(AddOption, _React$Component6);
 
@@ -252,4 +261,5 @@ var AddOption = function (_React$Component6) {
   return AddOption;
 }(React.Component);
 
-ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById("app"));
+ReactDOM.render(React.createElement(Stateless, { name: 'matboud' }), document.getElementById("app"));
+// ReactDOM.render(<IndecisionApp  />, document.getElementById("app"));
