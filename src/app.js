@@ -1,6 +1,3 @@
-import './utils.js';
-import {isAdult, canDrink} from './utils.js';
-console.log('app.js is running!');
+import validator from 'validator';
 
-console.log(isAdult(34));
-console.log(canDrink(34));
+console.log(validator.isEmail('test@gmail.com'))
