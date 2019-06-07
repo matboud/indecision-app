@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
-    "build": "webpack",
+    "build": "webpack --watch",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
   },
   "dependencies": {
