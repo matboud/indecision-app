@@ -6,8 +6,29 @@ class IndecisionApp extends React.Component {
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleDeleteItem = this.handleDeleteItem.bind(this);
     this.state = {
-      options: props.options
+      options: []
     };
+  }
+
+  componentDidMount() {
+    try{
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+      
+      if(options) {
+        this.setState(()=>({options}));
+      }
+    }catch (e) {
+      // at least the state is not going to be updated if we got an error (like passing an invalide data to the state)
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState ) {
+    if(prevState.options.length !== this.state.options.length){
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json);
+    }
+
   }
 
   handleDeleteOptions() {
@@ -59,9 +80,7 @@ class IndecisionApp extends React.Component {
   }
 }
 
-IndecisionApp.defaultProps = {
-  options: []
-};
+
 
 const Header = props => {
   return (
@@ -91,6 +110,9 @@ const Options = props => {
   return (
     <div>
       <button onClick={props.handleDeleteOptions}>Remove All</button>
+      {
+        props.options.length === 0 && <p>no item to show!</p>
+      }
       {props.options.map((option, index) => (
         <Option key={index} optionText={option} handleDeleteItem={props.handleDeleteItem}>
           {option}
@@ -130,6 +152,9 @@ class AddOption extends React.Component {
     const error = this.props.handleAddOption(input);
 
     this.setState(() => ({ error }));
+    if(!error) {
+      e.target.elements.input.value = '';
+    }
   }
   render() {
     return (
@@ -145,7 +170,7 @@ class AddOption extends React.Component {
 }
 
 ReactDOM.render(
-  <IndecisionApp name="matboud" />,
+  <IndecisionApp/>,
   document.getElementById("app")
 );
 // ReactDOM.render(<IndecisionApp  />, document.getElementById("app"));
