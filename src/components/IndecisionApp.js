@@ -8,7 +8,7 @@ import OptionModal from "./OptionModal";
 export default class IndecisionApp extends React.Component {
   state = {
     options: [],
-    isOpen: undefined,
+    isOpen: undefined
   };
 
   handleDeleteOptions = () => {
@@ -21,8 +21,7 @@ export default class IndecisionApp extends React.Component {
 
     this.setState(() => ({
       isOpen: option
-    }))
-    
+    }));
   };
 
   handleDeleteItem = optionTR => {
@@ -45,8 +44,8 @@ export default class IndecisionApp extends React.Component {
 
   handleCloseModal = () => {
     this.setState(() => ({
-      isOpen: undefined,
-    }))
+      isOpen: undefined
+    }));
   };
 
   componentDidMount() {
@@ -75,19 +74,22 @@ export default class IndecisionApp extends React.Component {
     return (
       <div>
         <Header title={title} subTitle={subTitle} />
-        <Action
-          hasOption={this.state.options.length > 0}
-          handlePick={this.handlePick}
-        />
-        <Options
-          options={this.state.options}
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteItem={this.handleDeleteItem}
-        />
-        <AddOption handleAddOption={this.handleAddOption} />
+        <div className="container">
+          <Action
+            hasOption={this.state.options.length > 0}
+            handlePick={this.handlePick}
+          />
+          <Options
+            options={this.state.options}
+            handleDeleteOptions={this.handleDeleteOptions}
+            handleDeleteItem={this.handleDeleteItem}
+          />
+          <AddOption handleAddOption={this.handleAddOption} />
+        </div>
+
         <OptionModal
-        open={this.state.isOpen}
-        handleCloseModal={this.handleCloseModal}
+          open={this.state.isOpen}
+          handleCloseModal={this.handleCloseModal}
         />
       </div>
     );

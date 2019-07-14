@@ -1,0 +1,28 @@
+.big-button{
+    background-color: $peter-river;
+    border: none;
+    border-bottom: .6rem solid darken($peter-river, 10%);
+    color: white;
+    font-size: $l-size;
+    width: 100%;
+    margin-bottom: $xl-size;
+    padding: 2.4rem;
+}
+
+.big-button:disabled{
+    opacity: .5;
+}
+.button {
+    background-color: $peter-river;
+    border: none;
+    border-bottom: .3rem solid darken($peter-river, 10%);
+    color: white;
+    font-weight: 500;
+    padding: $s-size;
+}
+.button--link{
+    background: none;
+    border: none;
+    color: $off-white;
+    padding: 0;
+}
